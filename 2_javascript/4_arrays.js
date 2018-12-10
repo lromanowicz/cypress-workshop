@@ -24,7 +24,7 @@ function forEachLoop() {
 	let newFruits = fruits.forEach(function(fruit) {
 		return fruit.toUpperCase();
 	});
-	console.log(`Current fruit is: ${newFruits}`);
+	console.log(`New Fruits array now contains: ${newFruits}`);
 }
 
 //... using map() function

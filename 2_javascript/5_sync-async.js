@@ -35,7 +35,7 @@ function getTextFromFilePromise(filePath) {
 		return 'File path must be a non empty string!';
 	}
 
-	return new Promise(function (resolve, reject) {
+	return new Promise(function(resolve, reject) {
 		fs.exists(filePath, function(isExisting) {
 			if (isExisting) {
 				fs.readFile(filePath, 'utf-8', function(err, data) {
@@ -65,7 +65,11 @@ getTextFromFile('./text_file.txt', function(data) {
 console.log(string);
 
 //Getting text from file using promise based function
-getTextFromFilePromise('./text_file.txt')
-	.then(function (text) {
-		console.log(`Promise getText: ${text}`);
-	});
+const fileData = getTextFromFilePromise('./text_file.txt'); //This won`t work as intended...
+console.log(fileData);
+
+
+//This will :)
+getTextFromFilePromise('./text_file.txt').then(function(text) {
+	console.log(`Promise getText: ${text}`);
+});
