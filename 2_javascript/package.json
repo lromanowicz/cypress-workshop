@@ -1,0 +1,16 @@
+{
+  "name": "2_javascript",
+  "version": "1.0.0",
+  "description": "Examples of JavaScript usage",
+  "main": "index.js",
+  "scripts": {
+    "variables": "node ./1_variables.js",
+    "cf": "node ./2_control-flow.js",
+    "loops": "node ./3_loops.js",
+    "arrays": "node ./4_arrays.js",
+    "sync": "node ./5_sync-async.js",
+    "context": "node ./6_context.js"
+  },
+  "author": "lromanowicz",
+  "license": "ISC"
+}
