@@ -23,15 +23,22 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+declare namespace Cypress {
+	interface Chainable<Subject> {
+		signIn: (login: string, password: string) => Cypress.Chainable<any>;
+		signInWithUserObject: (userObject: {}) => Cypress.Chainable<any>;
+	}
+}
+
 Cypress.Commands.add('signIn', (login, password) => {
 	cy.visit('login');
 	cy.get('#username').type(login);
-	cy.get('#password').type(`${password}{enter}`);
+	return cy.get('#password').type(`${password}{enter}`);
 });
 
 Cypress.Commands.add('signInWithUserObject', userObject => {
 	cy.get('#username').type(userObject.username);
-	cy.get('#password').type(`${userObject.password}{enter}`);
+	return cy.get('#password').type(`${userObject.password}{enter}`);
 });
 
 // Cypress.Commands.overwrite('visit', (originFn, url, options) => {
