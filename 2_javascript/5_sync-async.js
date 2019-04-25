@@ -12,44 +12,26 @@ function async() {
 }
 
 function getTextFromFile(filePath, cb) {
-	if (typeof filePath !== 'string' || filePath.length <= 0) {
-		return cb('File path must be a non empty string!');
-	}
-
-	fs.exists(filePath, function(isExisting) {
-		if (isExisting) {
-			fs.readFile(filePath, 'utf-8', function(err, data) {
-				if (err) {
-					return cb(err);
-				}
-				return cb(data);
-			});
-		} else {
-			return cb('File doesn`t exist!');
+	fs.readFile(filePath, 'utf-8', function(err, data) {
+		if (err) {
+			return cb(err);
 		}
+		return cb(data);
 	});
 }
 
 function getTextFromFilePromise(filePath) {
-	if (typeof filePath !== 'string' || filePath.length <= 0) {
-		return 'File path must be a non empty string!';
-	}
-
 	return new Promise(function(resolve, reject) {
-		fs.exists(filePath, function(isExisting) {
-			if (isExisting) {
-				fs.readFile(filePath, 'utf-8', function(err, data) {
-					if (err) {
-						reject(err);
-					}
-					resolve(data);
-				});
-			} else {
-				reject('File doesn`t exist!');
+		fs.readFile(filePath, 'utf-8', function(err, data) {
+			if (err) {
+				reject(err);
 			}
+			resolve(data);
 		});
 	});
 }
+
+
 
 //This should be simple, but...
 sync();
@@ -60,7 +42,8 @@ async();
 //What will happen? What value will be the string variable?
 let string;
 getTextFromFile('./text_file.txt', function(data) {
-	console.log(data);
+	console.log(`Asynchronous: ${data}`);
+	string = data;
 });
 console.log(string);
 
