@@ -19,24 +19,24 @@ constUsage = function() {
 
 //Let`s see what is the difference!
 //Using var keyword
-var varString = 'This is an old string';
 function varCheckString(isNewString) {
+	var varString = 'This is an old string';
 	if (isNewString) {
+		console.log(`Old varString: ${varString}`); // This is an old string !!
 		var varString = 'This is a new string';
-		return varString;
+		console.log(`New varString: ${varString}`)
 	}
-	return varString; //undefined !!
 }
 
 
 //Using let keyword.
-let letString = 'This is an old string';
 function letCheckString(isNewString) {
+	let letString = 'This is an old string';
 	if (isNewString) {
+		console.log(`Old letString: ${letString}`); // Undefined!!
 		let letString = 'This is a new string';
-		return letString;
+		console.log(`New letString: ${letString}`);
 	}
-	return letString; // "This is an old string"
 }
 
 //Using const keyword
@@ -50,7 +50,7 @@ function constCheck(shouldBeChanged) {
 }
 
 
-console.log(varCheckString(false));
-console.log(letCheckString(false));
+console.log(varCheckString(true));
+console.log(letCheckString(true));
 console.log(constCheck(false));
 

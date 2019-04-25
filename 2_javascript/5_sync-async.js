@@ -49,10 +49,10 @@ console.log(string);
 
 //Getting text from file using promise based function
 const fileData = getTextFromFilePromise('./text_file.txt'); //This won`t work as intended...
-console.log(fileData);
+console.log(`This won\`t work as intended...: ${fileData}`);
 
 
 //This will :)
 getTextFromFilePromise('./text_file.txt').then(function(text) {
-	console.log(`Promise getText: ${text}`);
+	console.log(`This works well...: ${text}`);
 });
