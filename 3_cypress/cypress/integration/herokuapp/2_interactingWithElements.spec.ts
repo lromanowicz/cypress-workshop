@@ -48,5 +48,26 @@ describe('Interacting with Web Elements', function() {
 		cy.get('#flash').should('contain', 'Your username is invalid!');
 	});
 
-	
+	it('Should do actions on yielded subject using .then()', function() {
+		cy.visit('entry_ad');
+		cy.get('.modal-title')
+			.then($title => {
+				$title.addClass('new-class');
+			})
+			.should('have.class', 'new-class')
+	});
+
+	[{'username': '123', 'password': '123123'}, {'username': '321', 'password': '321321'}].forEach(data => {
+		it(`should not login with username: ${data.username} and password: ${data.password}`, function() {
+			cy.visit('login');
+			cy.get('#username')
+				.type(data.username);
+			cy.get('#password')
+				.type(data.password);
+			cy.get('button').click();
+
+			cy.get('#flash')
+				.should('contain', 'Your username is invalid!');
+		});
+	});
 });
