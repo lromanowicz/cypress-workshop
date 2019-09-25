@@ -9,5 +9,5 @@
     "lib": ["es6", "dom"],
     "types": ["cypress"]
   },
-  "include": ["**/*.ts", "cypress/support/index.js"]
+  "include": ["**/*.ts", "./node_modules/cypress"]
 }

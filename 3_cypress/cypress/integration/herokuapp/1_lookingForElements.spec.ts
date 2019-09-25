@@ -4,7 +4,7 @@ describe('Finding elements', function() {
 		cy.get('h1').should('have.text', 'Welcome to the-internet');
 	});
 
-	it.only('Should wait for element to appear', function() {
+	it('Should wait for element to appear', function() {
 		cy.visit('dynamic_loading/2');
 		cy.get('#start')
 			.find('button')
@@ -18,7 +18,7 @@ describe('Finding elements', function() {
 		cy.contains('Available Examples').should('exist');
 	});
 
-	it.only('Should find "delete" button in first row of table', function() {
+	it('Should find "delete" button in first row of table', function() {
 		cy.visit('challenging_dom');
 		cy.contains('Iuvaret0')
 			.parent()

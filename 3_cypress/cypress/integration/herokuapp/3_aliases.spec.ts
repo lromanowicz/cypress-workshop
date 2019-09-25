@@ -38,7 +38,7 @@ describe('Using fixtures and aliases', function() {
 			.should('have.value', this.user.password);
 	});
 
-	it.only('Should change data received from user.json', function() {
+	it('Should change data received from user.json', function() {
 		cy.visit('login');
 		cy.fixture('user.json').then(user => {
 			user.username = 'johnSnow';
